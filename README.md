@@ -1,95 +1,79 @@
-🏠 Remote Work Mental Health Analyzer
+# Remote Work Mental Health Analyzer 🏠
 
-Remote Work Mental Health Analyzer merupakan aplikasi berbasis Machine Learning yang dirancang untuk menganalisis dampak sistem kerja jarak jauh (remote work) terhadap kondisi kesehatan mental seseorang. 
-Aplikasi ini membantu pengguna memprediksi tiga aspek utama kesejahteraan berdasarkan data demografi, pola kerja, dan faktor pendukung lainnya.
+Ini adalah project UAS Machine Learning yang mencoba melihat gimana pola kerja remote bisa berhubungan sama kondisi mental seseorang. Daripada cuma bikin model terus taruh di notebook, kelompok kami bikin dashboard interaktifnya juga pakai Streamlit biar hasilnya bisa langsung dicoba, nggak cuma dibaca.
 
-Model yang digunakan merupakan Multi-Output Classification, sehingga dalam satu kali proses prediksi aplikasi dapat menghasilkan beberapa output secara bersamaan, yaitu:
+Intinya, dari beberapa data yang diisi user (umur, jam kerja, posisi, dukungan kantor, dll), sistem ini bakal memprediksi tiga hal sekaligus:
 
-😴 Kualitas Tidur (Sleep Quality)
+- Kualitas tidur
+- Tingkat stres
+- Kondisi kesehatan mental secara umum
 
-😟 Tingkat Stres (Stress Level)
+Ketiganya diprediksi bareng dalam satu kali proses, karena model yang dipakai adalah Multi-Output Classification — jadi bukan tiga model terpisah, tapi satu model yang bisa ngeluarin tiga output berbeda.
 
-🧠 Kondisi Mental (Mental Health Condition)
+## Coba Sendiri
 
-Pengguna hanya perlu mengisi beberapa parameter seperti usia, pengalaman kerja, jam kerja mingguan, posisi pekerjaan, keseimbangan kehidupan dan pekerjaan (Work-Life Balance), tingkat isolasi sosial, dukungan perusahaan, jumlah rapat virtual, akses terhadap fasilitas kesehatan mental, perubahan produktivitas, serta tingkat kepuasan bekerja secara remote. Selanjutnya sistem akan melakukan proses prediksi menggunakan model Machine Learning yang telah dilatih dari dataset.
+App-nya bisa langsung diakses di:
+👉 [project-uas-machine-learning.streamlit.app](https://project-uas-machine-learning.streamlit.app)
 
-✨ Fitur Utama
-📊 Prediksi tiga kondisi kesehatan secara bersamaan menggunakan Multi-Output Classification.
+## Apa yang Bisa Dilakukan
 
-👤 Form input interaktif untuk data demografi dan pekerjaan.
+Ada 3 tab utama di dashboard:
 
-⚖️ Analisis faktor kesejahteraan seperti Work-Life Balance, Social Isolation, dan Company Support.
+**Formulir Prediksi** — di sini user isi data-data terkait dirinya (jam kerja per minggu, pengalaman kerja, work-life balance, isolasi sosial, jumlah meeting virtual, dan lain-lain), lalu sistem langsung kasih hasil prediksi tiga variabel di atas.
 
-🏢 Evaluasi faktor tambahan seperti akses layanan kesehatan mental, perubahan produktivitas, dan kepuasan kerja remote.
+**Analitik Data** — nampilin eksplorasi dari dataset yang dipakai buat training, mulai dari distribusi stress level, heatmap korelasi antar variabel numerik, sampai tabel data mentahnya yang bisa difilter dan di-download jadi CSV.
 
-📈 Tampilan antarmuka modern berbasis Streamlit.
+**Dokumentasi Sistem** — penjelasan singkat soal arsitektur model dan info dataset, buat yang penasaran cara kerjanya di balik layar.
 
-📚 Dokumentasi sistem yang menjelaskan cara penggunaan aplikasi.
+## Cara Kerjanya
 
+Alurnya cukup standar untuk aplikasi ML berbasis Streamlit:
 
+1. User isi form di dashboard
+2. Data yang masuk divalidasi dan diproses dulu (encoding + scaling) pakai encoder dan scaler yang sama persis dengan yang dipakai waktu training
+3. Data yang sudah diproses masuk ke model buat diprediksi
+4. Hasil prediksi tiga variabel ditampilkan ke user
 
-🛠️ Teknologi yang Digunakan
+## Parameter Input
 
-Python
+Data yang perlu diisi user dibagi jadi beberapa kelompok:
 
-Streamlit
+*Demografi & pekerjaan* — umur, pengalaman kerja, jam kerja per minggu, posisi kerja
 
-Scikit-Learn
+*Kesejahteraan* — work-life balance, tingkat isolasi sosial, dukungan perusahaan, jumlah virtual meeting
 
-Pandas
+*Lainnya* — akses ke fasilitas kesehatan mental, perubahan produktivitas, kepuasan kerja remote
 
-NumPy
+## Tech Stack
 
-Joblib
+- Python
+- Streamlit (buat dashboard-nya)
+- Scikit-learn (training model)
+- Pandas & NumPy (olah data)
+- Plotly (visualisasi di tab Analitik Data)
+- Joblib (nyimpen model, encoder, scaler)
 
-Machine Learning (Multi-Output Classification)
+## Struktur Project
 
+```
+├── dashboard.py                              # aplikasi Streamlit
+├── projek_kel1_ML.ipynb                      # notebook eksplorasi & training model
+├── model_multi_output.pkl                    # model hasil training
+├── encoder.pkl                               # encoder buat fitur kategorikal
+├── scaler.pkl                                # scaler buat fitur numerik
+├── Impact_of_Remote_Work_on_Mental_Health.csv # dataset
+└── requirements.txt
+```
 
-⚙️ Cara Kerja Sistem
+## Menjalankan di Lokal
 
-Pengguna mengisi seluruh data pada formulir.
-Data divalidasi dan diproses sesuai format yang dibutuhkan model.
-Data dipreprocessing menggunakan encoder dan scaler yang telah disimpan saat proses pelatihan model.
-Model Machine Learning melakukan prediksi terhadap tiga target sekaligus.
-Hasil analisis ditampilkan kepada pengguna sebagai informasi kondisi kesehatan mental berdasarkan karakteristik dan kebiasaan kerja remote.
+```bash
+git clone <repo-ini>
+cd project-uas-machine-learning
+pip install -r requirements.txt
+streamlit run dashboard.py
+```
 
+## Catatan
 
-📌 Parameter yang Digunakan
-
-👤 Demografi & Pekerjaan
-Umur
-
-Pengalaman Kerja
-
-Jam Kerja per Minggu
-
-Posisi Pekerjaan
-
-
-⚖️ Metrik Kesejahteraan
-
-Work-Life Balance
-
-Tingkat Isolasi Sosial
-
-Dukungan Perusahaan
-
-Jumlah Virtual Meeting
-
-
-🏥 Faktor Tambahan
-Akses Fasilitas Kesehatan Mental
-Perubahan Produktivitas
-Kepuasan terhadap Remote Work
-
-
-🎯 Tujuan Pengembangan
-
-Aplikasi ini dikembangkan sebagai implementasi Machine Learning untuk membantu mengidentifikasi potensi dampak kerja jarak jauh terhadap kesejahteraan mental. Hasil prediksi diharapkan dapat menjadi informasi awal bagi individu maupun organisasi dalam meningkatkan kualitas lingkungan kerja, keseimbangan hidup, serta dukungan terhadap kesehatan mental karyawan.
-
-💡 Keunggulan Aplikasi
-Prediksi tiga variabel sekaligus dalam satu proses menggunakan Multi-Output Classification.
-Antarmuka sederhana, responsif, dan mudah digunakan.
-Proses analisis berlangsung secara cepat melalui model yang telah dilatih sebelumnya.
-Memanfaatkan berbagai faktor yang berpengaruh terhadap kesejahteraan pekerja remote sehingga hasil prediksi lebih komprehensif.
-Cocok sebagai implementasi nyata penerapan Machine Learning pada bidang kesehatan mental dan analisis sumber daya manusia (Human Resources Analytics).
+Project ini dibuat untuk tujuan pembelajaran (tugas UAS mata kuliah Machine Learning), jadi hasil prediksinya sebaiknya nggak dijadikan acuan medis atau psikologis yang serius. Kalau memang lagi ngalamin masalah kesehatan mental, tetap lebih baik konsultasi ke profesional ya.
