@@ -6,28 +6,42 @@ Aplikasi ini membantu pengguna memprediksi tiga aspek utama kesejahteraan berdas
 Model yang digunakan merupakan Multi-Output Classification, sehingga dalam satu kali proses prediksi aplikasi dapat menghasilkan beberapa output secara bersamaan, yaitu:
 
 😴 Kualitas Tidur (Sleep Quality)
+
 😟 Tingkat Stres (Stress Level)
+
 🧠 Kondisi Mental (Mental Health Condition)
 
 Pengguna hanya perlu mengisi beberapa parameter seperti usia, pengalaman kerja, jam kerja mingguan, posisi pekerjaan, keseimbangan kehidupan dan pekerjaan (Work-Life Balance), tingkat isolasi sosial, dukungan perusahaan, jumlah rapat virtual, akses terhadap fasilitas kesehatan mental, perubahan produktivitas, serta tingkat kepuasan bekerja secara remote. Selanjutnya sistem akan melakukan proses prediksi menggunakan model Machine Learning yang telah dilatih dari dataset.
 
 ✨ Fitur Utama
 📊 Prediksi tiga kondisi kesehatan secara bersamaan menggunakan Multi-Output Classification.
+
 👤 Form input interaktif untuk data demografi dan pekerjaan.
+
 ⚖️ Analisis faktor kesejahteraan seperti Work-Life Balance, Social Isolation, dan Company Support.
+
 🏢 Evaluasi faktor tambahan seperti akses layanan kesehatan mental, perubahan produktivitas, dan kepuasan kerja remote.
+
 📈 Tampilan antarmuka modern berbasis Streamlit.
+
 📚 Dokumentasi sistem yang menjelaskan cara penggunaan aplikasi.
+
 
 
 🛠️ Teknologi yang Digunakan
 
 Python
+
 Streamlit
+
 Scikit-Learn
+
 Pandas
+
 NumPy
+
 Joblib
+
 Machine Learning (Multi-Output Classification)
 
 
@@ -44,14 +58,25 @@ Hasil analisis ditampilkan kepada pengguna sebagai informasi kondisi kesehatan m
 
 👤 Demografi & Pekerjaan
 Umur
+
 Pengalaman Kerja
+
 Jam Kerja per Minggu
+
 Posisi Pekerjaan
+
+
 ⚖️ Metrik Kesejahteraan
+
 Work-Life Balance
+
 Tingkat Isolasi Sosial
+
 Dukungan Perusahaan
+
 Jumlah Virtual Meeting
+
+
 🏥 Faktor Tambahan
 Akses Fasilitas Kesehatan Mental
 Perubahan Produktivitas
