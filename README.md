@@ -21,6 +21,7 @@ Pengguna hanya perlu mengisi beberapa parameter seperti usia, pengalaman kerja, 
 
 
 🛠️ Teknologi yang Digunakan
+
 Python
 Streamlit
 Scikit-Learn
@@ -31,6 +32,7 @@ Machine Learning (Multi-Output Classification)
 
 
 ⚙️ Cara Kerja Sistem
+
 Pengguna mengisi seluruh data pada formulir.
 Data divalidasi dan diproses sesuai format yang dibutuhkan model.
 Data dipreprocessing menggunakan encoder dan scaler yang telah disimpan saat proses pelatihan model.
@@ -39,6 +41,7 @@ Hasil analisis ditampilkan kepada pengguna sebagai informasi kondisi kesehatan m
 
 
 📌 Parameter yang Digunakan
+
 👤 Demografi & Pekerjaan
 Umur
 Pengalaman Kerja
