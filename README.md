@@ -39,7 +39,7 @@ Hasil analisis ditampilkan kepada pengguna sebagai informasi kondisi kesehatan m
 
 
 📌 Parameter yang Digunakan
-👤 Demografi & Pekerjaan 
+👤 Demografi & Pekerjaan
 Umur
 Pengalaman Kerja
 Jam Kerja per Minggu
@@ -53,6 +53,8 @@ Jumlah Virtual Meeting
 Akses Fasilitas Kesehatan Mental
 Perubahan Produktivitas
 Kepuasan terhadap Remote Work
+
+
 🎯 Tujuan Pengembangan
 
 Aplikasi ini dikembangkan sebagai implementasi Machine Learning untuk membantu mengidentifikasi potensi dampak kerja jarak jauh terhadap kesejahteraan mental. Hasil prediksi diharapkan dapat menjadi informasi awal bagi individu maupun organisasi dalam meningkatkan kualitas lingkungan kerja, keseimbangan hidup, serta dukungan terhadap kesehatan mental karyawan.
