@@ -134,7 +134,7 @@ with tab1:
 
     st.divider()
 
-    if st.button("🚀 Analisa Prediksi", type="primary", width='stretch'):
+    if st.button("🚀 Analisa Prediksi", type="primary", use_container_width=True):
 
         with st.spinner('Mengeksekusi pipeline prediksi... Memvalidasi data...'):
             time.sleep(1.2)
