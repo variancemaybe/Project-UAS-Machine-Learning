@@ -339,7 +339,7 @@ with tab2:
 
     # ---------- TABEL DATA ----------
     st.markdown('<div class="section-title">📋 Tampilan Data</div>', unsafe_allow_html=True)
-    st.dataframe(df_filtered, width='stretch', height=380)
+    st.dataframe(df_filtered, use_container_width=True, height=380)
 
     csv_download = df_filtered.to_csv(index=False).encode('utf-8')
     st.download_button(
@@ -347,7 +347,7 @@ with tab2:
         data=csv_download,
         file_name="remote_work_mental_health_filtered.csv",
         mime="text/csv",
-        width='stretch'
+        use_container_width=True
     )
 
 # TAB 3 — DOKUMENTASI SISTEM
@@ -361,4 +361,4 @@ with tab3:
     st.write(f"Dataset yang digunakan berisi **{df.shape[0]:,} baris** dan **{df.shape[1]} kolom**, mencakup data demografi, pola kerja, dan faktor kesejahteraan dari pekerja remote di berbagai region.")
     dtypes_df = df.dtypes.astype(str).reset_index()
     dtypes_df.columns = ['Kolom', 'Tipe Data']
-    st.dataframe(dtypes_df, width='stretch')
+    st.dataframe(dtypes_df, use_container_width=True)
