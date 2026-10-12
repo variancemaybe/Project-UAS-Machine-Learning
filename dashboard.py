@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 # KONFIGURASI HALAMAN
 st.set_page_config(
-    page_title="Kel1 | Remote Work Mental Health Analyzer",
+    page_title="Gen Z Mood & Mind Tracker",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -91,8 +91,8 @@ PALETTE = ["#7C3AED", "#4F46E5", "#DB2777", "#059669", "#F59E0B", "#0EA5E9"]
 # HERO HEADER
 st.markdown("""
 <div class="hero">
-    <h1>💻 Remote Work Mental Health Analyzer 🏠</h1>
-    <p>Aplikasi prediksi dampak <b>remote work</b> terhadap Kualitas Tidur, Tingkat Stres, dan Kondisi
+    <h1>👦 Gen Z Mood & Mind Tracker 📈</h1>
+    <p>Aplikasi prediksi dampak <b>Mood & Mind</b> terhadap Kualitas Tidur, Tingkat Stres, dan Kondisi
     Mental menggunakan Machine Learning (Multi-Output Classification), dilengkapi dashboard analitik data.</p>
 </div>
 """, unsafe_allow_html=True)
@@ -107,30 +107,43 @@ with tab1:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.subheader("👨‍💻 Demografi & Kerja")
+        st.subheader("👨‍💻 Demografi & Students")
         with st.container(border=True):
-            age = st.slider("Umur", 18, 65, 25, help="Usia pekerja")
-            experience = st.slider("Pengalaman Kerja (Tahun)", 0, 40, 3)
-            hours_worked = st.number_input("Jam Kerja per Minggu", 10, 100, 40)
-            job_role = st.selectbox("Posisi Pekerjaan", [
-                "Data Scientist", "Designer", "HR", "Marketing",
-                "Project Manager", "Sales", "Software Engineer"
-            ])
+            age = st.slider("Umur", 15, 20, 18, help="Usia pekerja")
+            experience = st.slider("Pengalaman Organisasi / Ekskul (Tahun)", 0, 10, 3)
+            hours_worked = st.number_input("Jam Belajar per Minggu", 10, 100, 48)
+            # 1. Definisikan mapping khusus untuk UI
+            # Kiri (Key) = Yang tampil di UI | Kanan (Value) = Nilai asli untuk model
+            job_role_mapping = {
+                "IPA": "Data Scientist", 
+                "Designer": "Designer", 
+                "HR": "HR", 
+                "Marketing": "Marketing",
+                "Project Manager": "Project Manager", 
+                "IPS": "Sales", 
+                "Software Engineer": "Software Engineer"
+            }
+            
+            # 2. Tampilkan selectbox dengan key dari mapping (UI-friendly)
+            ui_job_role = st.selectbox("Posisi Peminatan", list(job_role_mapping.keys()))
+            
+            # 3. Konversi hasil pilihan UI menjadi nilai yang dimengerti model
+            job_role = job_role_mapping[ui_job_role]
 
     with col2:
-        st.subheader("⚖️ Metrik Kesejahteraan")
+        st.subheader("⚖️ Kondisi Mental & Sosial Siswa")
         with st.container(border=True):
-            work_life = st.slider("Rating Work-Life Balance", 1, 5, 3, help="1 = Sangat Buruk, 5 = Sangat Baik")
-            isolation = st.slider("Rating Isolasi Sosial", 1, 5, 3, help="1 = Tidak terisolasi, 5 = Sangat terisolasi")
-            support = st.slider("Rating Dukungan Perusahaan", 1, 5, 3)
-            virtual_meetings = st.number_input("Jumlah Meeting Virtual / Minggu", 0, 50, 10)
+            work_life = st.slider("Rating Study-Life Balance", 1, 5, 3, help="1 = Sangat Buruk, 5 = Sangat Baik")
+            isolation = st.slider("Rating Interaksi Sosial", 1, 5, 3, help="1 = Tidak terisolasi, 5 = Sangat terisolasi")
+            support = st.slider("Support System Lingkungan Sekolah", 1, 5, 3)
+            virtual_meetings = st.number_input("Jumlah Tugas / Ulangan per Minggu", 0, 15, 7)
 
     with col3:
         st.subheader("🏥 Faktor Tambahan")
         with st.container(border=True):
-            mental_health_access = st.radio("Akses ke Fasilitas Kesehatan Mental?", ["Yes", "No"], horizontal=True)
-            productivity = st.selectbox("Perubahan Produktivitas", ["Decrease", "Increase", "No Change"])
-            satisfaction = st.selectbox("Kepuasan Remote Work", ["Satisfied", "Neutral", "Unsatisfied"])
+            mental_health_access = st.radio("Akses ke Guru Konseling (BK) / Psikolog Sekolah?", ["Yes", "No"], horizontal=True)
+            productivity = st.selectbox("Perubahan Semangat & Fokus Belajar", ["Decrease", "Increase", "No Change"])
+            satisfaction = st.selectbox("Tingkat Kenyamanan di Lingkungan Sekolah", ["Satisfied", "Neutral", "Unsatisfied"])
 
     st.divider()
 
